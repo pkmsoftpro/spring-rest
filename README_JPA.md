@@ -3,37 +3,44 @@
 For the Persistence layer:
 
 1. create the class JPAConfig.java
+```
 		a. in url, change &amp; to &
 		b. add emf.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
 		c. add jpaProperties.put("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
-		
+```		
 2. For @Transactional
-		add the following in JPAConfig.java
+```
+add the following in JPAConfig.java
 			a. @Bean
 				public PlatformTransactionManager txManager(EntityManagerFactory emf) {
 					JpaTransactionManager txm = new JpaTransactionManager(emf);
 					return txm;
 				}
 			b. @EnableTransactionManagement
+```  
+
 		
-		
-2. In AppInitializer.java add JPAConfig.class
-	
+3. In AppInitializer.java add JPAConfig.class
+```  	
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
 		// TODO Auto-generated method stub
 		return new Class[] {Application.class, JPAConfig.class};
 	}
+```  
 
-3. In pom.xml
+4. In pom.xml
+```
 	add:
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
 			<version>5.1.9.RELEASE</version>
 		</dependency>
+```  
 
-4. for Java code in Controller:
+5. for Java code in Controller:
+```
 	@PersistenceContext
 	private EntityManager em;
 	
@@ -54,5 +61,6 @@ For the Persistence layer:
 		
 		return resultList;
 	}
-	
-5. persistence.xml is no longer required.
+```  
+
+6. persistence.xml is no longer required.
