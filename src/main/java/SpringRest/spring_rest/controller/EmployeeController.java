@@ -5,7 +5,9 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -30,6 +32,28 @@ public class EmployeeController {
 	
 	@Autowired
 	EmployeeService service;
+	
+	@PersistenceContext
+	private EntityManager em;
+	
+	/*
+	 * http://localhost:8080/spring-rest/api/employees/entityManagerJpa
+	 */
+	
+	@Transactional
+	@RequestMapping(method=RequestMethod.GET, value="entityManagerJpa")
+	public List<Employee> entityManagerJPA(){
+		
+		TypedQuery<Employee> query = em.createNamedQuery("Employee.findAll", Employee.class);
+		
+		List<Employee> resultList = query.getResultList();
+		
+		resultList.forEach(result -> System.out.println(result));
+		
+		em.close();
+		
+		return resultList;
+	}
 
 	@RequestMapping(method=RequestMethod.GET)
 	public List<Employee> findAll(){

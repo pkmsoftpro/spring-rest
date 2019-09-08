@@ -7,7 +7,7 @@ public class AppInitializer extends AbstractAnnotationConfigDispatcherServletIni
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
 		// TODO Auto-generated method stub
-		return new Class[] {Application.class};
+		return new Class[] {Application.class, JPAConfig.class};
 	}
 
 	@Override
