@@ -3,6 +3,7 @@
 For the Spring Boot Configuration:
 
 1. pom.xml
+```
 	<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -18,7 +19,7 @@ For the Spring Boot Configuration:
 			<artifactId>mysql-connector-java</artifactId>
 			<version>8.0.15</version>
 		</dependency>
-		
+```		
 2. @EnableAutoConfiguration--> it looks into class path and check if it has web-starter and data-jpa then it will 	automatically configure JPA and Application for enabling spring and jpa configuration for the project
 
 3. It will auto-configure spring application so get rid of AppInitializer and JPAConfig
@@ -32,3 +33,27 @@ For the Spring Boot Configuration:
  * 
  * url: http://localhost:8080/employees/springEntityManagerJpa
 ```
+
+5. to make big fat jar:
+
+	a. <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<version>2.1.8.RELEASE</version>
+		</dependency>
+	b. <plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>2.1.8.RELEASE</version>
+				<configuration>
+					<mainClass>SpringRest.spring_rest.Application</mainClass>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
+		</plugin>
+	c. mvn clean install -> spring-rest-1.0.0.jar
