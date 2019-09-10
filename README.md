@@ -35,7 +35,7 @@ For the Spring Boot Configuration:
 ```
 
 5. to make big fat jar:
-
+```
 	a. <dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
@@ -57,3 +57,5 @@ For the Spring Boot Configuration:
 				</executions>
 		</plugin>
 	c. mvn clean install -> spring-rest-1.0.0.jar
+	
+```
