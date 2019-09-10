@@ -1,66 +1,26 @@
 
 
-For the Persistence layer:
+For the Spring Boot Configuration:
 
-1. create the class JPAConfig.java
-```
-		a. in url, change &amp; to &
-		b. add emf.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
-		c. add jpaProperties.put("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
-```		
-2. For @Transactional
-```
-add the following in JPAConfig.java
-			a. @Bean
-				public PlatformTransactionManager txManager(EntityManagerFactory emf) {
-					JpaTransactionManager txm = new JpaTransactionManager(emf);
-					return txm;
-				}
-			b. @EnableTransactionManagement
-```  
-
-		
-3. In AppInitializer.java add JPAConfig.class
-```  	
-	@Override
-	protected Class<?>[] getRootConfigClasses() {
-		// TODO Auto-generated method stub
-		return new Class[] {Application.class, JPAConfig.class};
-	}
-```  
-
-4. In pom.xml
-```
-	add:
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-orm</artifactId>
-			<version>5.1.9.RELEASE</version>
+1. pom.xml
+	<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+			<version>2.1.8.RELEASE</version>
 		</dependency>
-```  
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<version>2.1.8.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.15</version>
+		</dependency>
+		
+2. @EnableAutoConfiguration--> it looks into class path and check if it has web-starter and data-jpa then it will 	automatically configure JPA and Application for enabling spring and jpa configuration for the project
 
-5. for Java code in Controller:
-```
-	@PersistenceContext
-	private EntityManager em;
-	
-	/*
-	 * http://localhost:8080/spring-rest/api/employees/entityManagerJpa
-	 */
-	
-	@RequestMapping(method=RequestMethod.GET, value="entityManagerJpa")
-	public List<Employee> entityManagerJPA(){
-		
-		TypedQuery<Employee> query = em.createNamedQuery("Employee.findAll", Employee.class);
-		
-		List<Employee> resultList = query.getResultList();
-		
-		resultList.forEach(result -> System.out.println(result));
-		
-		em.close();
-		
-		return resultList;
-	}
-```  
+3. It will auto-configure spring application so get rid of AppInitializer and JPAConfig
 
-6. persistence.xml is no longer required.
+4. use Spring-data, remove EmployeeRepositoryImpl.java

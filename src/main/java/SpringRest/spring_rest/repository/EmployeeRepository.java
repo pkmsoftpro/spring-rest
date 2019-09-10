@@ -1,10 +1,9 @@
 package SpringRest.spring_rest.repository;
 
-import java.util.List;
+import org.springframework.data.repository.CrudRepository;
 
 import SpringRest.spring_rest.entity.Employee;
 
-public interface EmployeeRepository {
+public interface EmployeeRepository extends CrudRepository<Employee, String>{
 
-	List<Employee> findAll();
 }

@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import SpringRest.spring_rest.entity.Employee;
-import SpringRest.spring_rest.exception.EmployeeNotFoundExcpetion;
 import SpringRest.spring_rest.repository.EmployeeRepository;
 
 @Service
@@ -17,8 +16,6 @@ public class EmployeeServiceImpl implements EmployeeService{
 
 	@Override
 	public List<Employee> findAll() {
-		return repository.findAll();
-		//throw new EmployeeNotFoundExcpetion("Employee found");
+		return (List<Employee>)repository.findAll();
 	}
-
 }
