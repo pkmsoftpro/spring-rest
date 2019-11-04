@@ -42,20 +42,20 @@ For the Spring Boot Configuration:
 			<version>2.1.8.RELEASE</version>
 		</dependency>
 	b. <plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-				<version>2.1.8.RELEASE</version>
-				<configuration>
-					<mainClass>SpringRest.spring_rest.Application</mainClass>
-				</configuration>
-				<executions>
-					<execution>
-						<goals>
-							<goal>repackage</goal>
-						</goals>
-					</execution>
-				</executions>
-		</plugin>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-maven-plugin</artifactId>
+		<version>2.1.8.RELEASE</version>
+		<configuration>
+			<mainClass>SpringRest.spring_rest.Application</mainClass>
+		</configuration>
+		<executions>
+			<execution>
+				<goals>
+					<goal>repackage</goal>
+				</goals>
+			</execution>
+		</executions>
+	    </plugin>
 	c. mvn clean install -> spring-rest-1.0.0.jar
 	
 ```
