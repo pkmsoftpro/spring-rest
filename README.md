@@ -4,7 +4,7 @@ For the Spring Boot Configuration:
 
 1. pom.xml
 ```
-	<dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 			<version>2.1.8.RELEASE</version>
@@ -37,10 +37,10 @@ For the Spring Boot Configuration:
 5. to make big fat jar:
 ```
 	a. <dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>
-			<version>2.1.8.RELEASE</version>
-		</dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-devtools</artifactId>
+		<version>2.1.8.RELEASE</version>
+	   </dependency>
 	b. <plugin>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-maven-plugin</artifactId>
