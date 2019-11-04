@@ -118,4 +118,10 @@ public class Employee {
 			<artifactId>mysql-connector-java</artifactId>
 			<version>8.0.15</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>5.1.9.RELEASE</version>
+		</dependency>
 
